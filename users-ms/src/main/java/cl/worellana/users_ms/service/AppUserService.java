@@ -1,5 +1,6 @@
 package cl.worellana.users_ms.service;
 
+import cl.worellana.users_ms.model.dto.AppUserProfileRequest;
 import cl.worellana.users_ms.model.dto.AppUserRequest;
 import cl.worellana.users_ms.model.dto.AppUserResponse;
 
@@ -11,6 +12,6 @@ public interface AppUserService {
     AppUserResponse findById(UUID id);
     AppUserResponse findByUsername(String username);
     List<AppUserResponse> findAll();
-    AppUserResponse updateProfile(UUID id, AppUserRequest request);
+    AppUserResponse updateProfile(UUID id, AppUserProfileRequest request);
     void deleteById(UUID id);
 }

@@ -1,5 +1,6 @@
 package cl.worellana.users_ms.controller;
 
+import cl.worellana.users_ms.model.dto.AppUserProfileRequest;
 import cl.worellana.users_ms.model.dto.AppUserRequest;
 import cl.worellana.users_ms.model.dto.AppUserResponse;
 import cl.worellana.users_ms.service.AppUserService;
@@ -41,9 +42,9 @@ public class AppUserController {
         return ResponseEntity.ok(appUserService.findById(id));
     }
 
-    @PutMapping("/{id}")
+    @PatchMapping("/{id}")
     public ResponseEntity<AppUserResponse> updateProfile(@PathVariable UUID id,
-                                                         @Valid @RequestBody AppUserRequest request) {
+                                                         @Valid @RequestBody AppUserProfileRequest request) {
         return ResponseEntity.ok(appUserService.updateProfile(id, request));
     }
 

@@ -2,6 +2,7 @@ package cl.worellana.users_ms.service;
 
 import cl.worellana.users_ms.exception.EmailAlreadyExistsException;
 import cl.worellana.users_ms.exception.UsernameAlreadyExistsException;
+import cl.worellana.users_ms.model.dto.AppUserProfileRequest;
 import cl.worellana.users_ms.model.dto.AppUserRequest;
 import cl.worellana.users_ms.model.dto.AppUserResponse;
 import cl.worellana.users_ms.model.AppUser;
@@ -68,12 +69,18 @@ public class AppUserServiceImpl implements AppUserService {
 
     @Override
     @Transactional
-    public AppUserResponse updateProfile(UUID id, AppUserRequest request) {
+    public AppUserResponse updateProfile(UUID id, AppUserProfileRequest request) {
         AppUser user = appUserRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("User not found: " + id));
-        user.setName(request.getName());
-        user.setLastname(request.getLastname());
-        user.setBio(request.getBio());
+        if (request.getName() != null) {
+            user.setName(request.getName());
+        }
+        if (request.getLastname() != null) {
+            user.setLastname(request.getLastname());
+        }
+        if (request.getBio() != null) {
+            user.setBio(request.getBio());
+        }
         return AppUserResponse.from(user);
     }
 
