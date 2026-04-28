@@ -1,0 +1,25 @@
+server:
+  port: 8081
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: workout-ms
+  datasource:
+    url: jdbc:postgresql://localhost:5432/workout_db
+    username: workout_user
+    password: workout_pass
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+  jpa:
+    defer-datasource-initialization: true
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
