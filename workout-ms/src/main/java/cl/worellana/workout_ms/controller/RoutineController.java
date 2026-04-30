@@ -1,6 +1,7 @@
 package cl.worellana.workout_ms.controller;
 
 import cl.worellana.workout_ms.model.dto.request.RoutineRequest;
+import cl.worellana.workout_ms.model.dto.request.UpdateRoutineRequest;
 import cl.worellana.workout_ms.model.dto.response.RoutineResponse;
 import cl.worellana.workout_ms.service.RoutineService;
 import jakarta.validation.Valid;
@@ -38,7 +39,7 @@ public class RoutineController {
 
     @PatchMapping("/{id}")
     public ResponseEntity<RoutineResponse> update(@PathVariable UUID id,
-                                                  @Valid @RequestBody RoutineRequest request) {
+                                                  @Valid @RequestBody UpdateRoutineRequest request) {
         return ResponseEntity.ok(routineService.update(id, request));
     }
 

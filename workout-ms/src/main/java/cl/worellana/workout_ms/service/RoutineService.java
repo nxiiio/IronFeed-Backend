@@ -1,6 +1,7 @@
 package cl.worellana.workout_ms.service;
 
 import cl.worellana.workout_ms.model.dto.request.RoutineRequest;
+import cl.worellana.workout_ms.model.dto.request.UpdateRoutineRequest;
 import cl.worellana.workout_ms.model.dto.response.RoutineResponse;
 
 import java.util.List;
@@ -14,7 +15,7 @@ public interface RoutineService {
 
     List<RoutineResponse> findAllByUserId(UUID userId);
 
-    RoutineResponse update(UUID id, RoutineRequest request);
+    RoutineResponse update(UUID id, UpdateRoutineRequest request);
 
     void deleteById(UUID id);
 }

@@ -1,7 +1,9 @@
 package cl.worellana.workout_ms.service.impl;
 
+import cl.worellana.workout_ms.exception.RoutineAlreadyExistsException;
 import cl.worellana.workout_ms.model.Routine;
 import cl.worellana.workout_ms.model.dto.request.RoutineRequest;
+import cl.worellana.workout_ms.model.dto.request.UpdateRoutineRequest;
 import cl.worellana.workout_ms.model.dto.response.RoutineResponse;
 import cl.worellana.workout_ms.repository.RoutineRepository;
 import cl.worellana.workout_ms.service.RoutineService;
@@ -24,6 +26,10 @@ public class RoutineServiceImpl implements RoutineService {
     @Override
     @Transactional
     public RoutineResponse create(RoutineRequest request) {
+        if (routineRepository.existsByUserIdAndName(request.getUserId(), request.getName())) {
+            throw new RoutineAlreadyExistsException();
+        }
+
         Routine routine = Routine.builder()
                 .userId(request.getUserId())
                 .name(request.getName())
@@ -50,7 +56,7 @@ public class RoutineServiceImpl implements RoutineService {
 
     @Override
     @Transactional
-    public RoutineResponse update(UUID id, RoutineRequest request) {
+    public RoutineResponse update(UUID id, UpdateRoutineRequest request) {
         Routine routine = routineRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Rutina no encontrada."));
         if (request.getName() != null) {

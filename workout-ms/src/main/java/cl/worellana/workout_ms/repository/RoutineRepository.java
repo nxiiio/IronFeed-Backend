@@ -9,4 +9,8 @@ import java.util.UUID;
 public interface RoutineRepository extends JpaRepository<Routine, UUID> {
 
     List<Routine> findAllByUserId(UUID userId);
+
+    boolean existsByUserIdAndName(UUID userId, String name);
+
+    boolean existsByUserIdAndNameAndIdNot(UUID userId, String name, UUID id);
 }

@@ -1,5 +1,6 @@
 package cl.worellana.workout_ms.controller;
 
+import cl.worellana.workout_ms.exception.RoutineAlreadyExistsException;
 import cl.worellana.workout_ms.model.dto.response.ExceptionResponse;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -43,6 +44,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ExceptionResponse> handleMissingParam(MissingServletRequestParameterException ex, HttpServletRequest req) {
         return build(HttpStatus.BAD_REQUEST, "BAD_REQUEST", "Parámetro requerido ausente", req,
                 Map.of(ex.getParameterName(), "es obligatorio"));
+    }
+
+    @ExceptionHandler(RoutineAlreadyExistsException.class)
+    public ResponseEntity<ExceptionResponse> handleRoutineExists(RoutineAlreadyExistsException ex, HttpServletRequest req) {
+        return build(HttpStatus.CONFLICT, "CONFLICT", ex.getMessage(), req, null);
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
