@@ -6,14 +6,14 @@ These instructions apply to the entire repository.
 
 ## Project Overview
 
-IronFeed is a **backend-only** fitness social network built as **8 independent microservices** with **Event-Driven Architecture (EDA)**. There is no frontend. The only actor type is the user.
+IronFeed is a **backend-only** fitness social network built as **independent microservices** with **Event-Driven Architecture (EDA)**. There is no frontend. The only actor type is the user.
 
-At the moment, only `users-ms` is implemented. The remaining planned services are:
+Microservices are developed incrementally. Always verify the existing service directories before claiming what is implemented. Current and planned services include:
 
 | Service | Responsibility |
 |---|---|
 | users-ms | Registration, auth (JWT), user profile |
-| workouts-ms | Routines, completed sessions, personal records |
+| workout-ms | Routines, completed sessions, personal records |
 | posts-ms | Posts, reactions, comments |
 | feed-ms | Personalized feed (no own DB — consumes Kafka events) |
 | social-ms | Follow/unfollow, user search |
@@ -23,13 +23,10 @@ At the moment, only `users-ms` is implemented. The remaining planned services ar
 
 ## Working Directory and Commands
 
-For application commands, work from `users-ms/` unless explicitly stated otherwise.
+For application commands, work from the specific microservice directory being changed, for example `users-ms/` or `workout-ms/`.
 
 ```bash
-./mvnw spring-boot:run          # start the service
-./mvnw test                     # run all tests
-./mvnw test -Dtest=ClassName    # run a single test class
-./mvnw package                  # build jar
+./mvnw spring-boot:run          # start the selected service only when explicitly requested
 ```
 
 To start the database, run from the project root:
@@ -45,37 +42,36 @@ docker compose up -d
 - Never design shared databases or cross-service joins.
 - Cross-service consistency must be handled with Kafka events, not database-level foreign keys.
 - Feed distribution is push-based through Kafka, not polling-based.
-- Personal records are auto-detected by `workouts-ms`; users do not report them manually.
+- Personal records are auto-detected by the workout service; users do not report them manually.
 - Challenge progress is auto-updated from workout sessions; users do not report it manually.
 - JWT is issued by `users-ms` and consumed by the other services, but that stack is still deferred for now.
 
-## Current users-ms Structure
+## Microservice Structure Pattern
 
-Current base package:
+Apply the same structure pattern to every microservice unless the existing code in that microservice already establishes a deliberate variation:
 
 ```text
-cl.worellana.users_ms/
-├── controller/   AppUserController — REST endpoints
-├── service/      AppUserService    — business logic
-├── repository/   AppUserRepository — JpaRepository<AppUser, UUID>
-└── model/        AppUser           — JPA entity (table: "users")
+{microservice}/src/main/java/cl/worellana/{microservice_package}/
+├── model/        JPA entities and domain models
+├── exception/    Custom exceptions for the microservice
+├── repository/   Spring Data repositories
+├── service/      Business logic and transactions
+└── controller/   REST endpoints
 ```
 
 Configuration file:
 
-- `users-ms/src/main/resources/application.yaml` → connects to `localhost:5432/users_db`
+- `{microservice}/src/main/resources/application.yaml` → connects to `localhost:5432/{microservice}_db`
 
 ## Conventions
 
 - Use Lombok on entities as established in the codebase.
-- Prefer Spring Boot test slices:
-  - `@WebMvcTest` for controllers
-  - `@DataJpaTest` for repositories
-  - `@SpringBootTest` for integration tests
+- Develop each microservice by layers in this order: **entity/model first**, then **service**, then **controller**.
+- Keep controllers thin; business rules belong in services, and persistence details belong in repositories/entities.
 - Check `.docs/functional-requirements.md` for business requirements (RF-01 to RF-28) before implementing related features.
 - Check `.docs/db-architecture.md` before making persistence decisions.
-- `AppUser` currently uses a UUID primary key with `GenerationType.UUID`.
-- IMPORTANT: `.docs/db-architecture.md` should document the current `users-ms` entity names unless a deliberate code refactor is made first.
+- Prefer UUID primary keys for microservice-owned entities unless an existing entity or documentation deliberately says otherwise.
+- IMPORTANT: `.docs/db-architecture.md` should document the current entity names unless a deliberate code refactor is made first.
 
 ## Do Not
 
@@ -83,6 +79,8 @@ Configuration file:
 - Do not implement Spring Security/JWT yet.
 - Do not implement Spring Cloud Gateway yet.
 - Do not implement Testcontainers yet.
+- Do not create, implement, or run tests unless the user explicitly changes this rule.
+- Do not run builds or package commands after changes.
 - Do not assume planned architecture pieces are already active in the current codebase.
 
 ## Agent Behavior for This Repo
