@@ -28,7 +28,10 @@ public class RoutineController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RoutineResponse>> findAllByUserId(@RequestParam UUID userId) {
+    public ResponseEntity<List<RoutineResponse>> findAll(@RequestParam(required = false) UUID userId) {
+        if (userId == null) {
+            return ResponseEntity.ok(routineService.findAll());
+        }
         return ResponseEntity.ok(routineService.findAllByUserId(userId));
     }
 

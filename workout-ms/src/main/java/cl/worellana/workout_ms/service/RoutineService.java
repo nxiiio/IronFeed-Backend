@@ -13,6 +13,8 @@ public interface RoutineService {
 
     RoutineResponse findById(UUID id);
 
+    List<RoutineResponse> findAll();
+
     List<RoutineResponse> findAllByUserId(UUID userId);
 
     RoutineResponse update(UUID id, UpdateRoutineRequest request);

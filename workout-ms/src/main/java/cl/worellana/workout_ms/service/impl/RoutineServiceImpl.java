@@ -48,6 +48,14 @@ public class RoutineServiceImpl implements RoutineService {
 
     @Override
     @Transactional(readOnly = true)
+    public List<RoutineResponse> findAll() {
+        return routineRepository.findAll().stream()
+                .map(RoutineResponse::from)
+                .toList();
+    }
+
+    @Override
+    @Transactional(readOnly = true)
     public List<RoutineResponse> findAllByUserId(UUID userId) {
         return routineRepository.findAllByUserId(userId).stream()
                 .map(RoutineResponse::from)

@@ -12,5 +12,7 @@ public interface WorkoutSessionService {
 
     WorkoutSessionResponse findById(UUID id);
 
+    List<WorkoutSessionResponse> findAll();
+
     List<WorkoutSessionResponse> findAllByUserId(UUID userId);
 }

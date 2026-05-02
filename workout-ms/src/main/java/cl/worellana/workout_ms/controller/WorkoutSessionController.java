@@ -27,7 +27,10 @@ public class WorkoutSessionController {
     }
 
     @GetMapping
-    public ResponseEntity<List<WorkoutSessionResponse>> findAllByUserId(@RequestParam UUID userId) {
+    public ResponseEntity<List<WorkoutSessionResponse>> findAll(@RequestParam(required = false) UUID userId) {
+        if (userId == null) {
+            return ResponseEntity.ok(workoutSessionService.findAll());
+        }
         return ResponseEntity.ok(workoutSessionService.findAllByUserId(userId));
     }
 
