@@ -1,7 +1,6 @@
-package cl.worellana.workout_ms.model.dto.response;
+package cl.worellana.workout_ms.model.dto.response.preview;
 
 import cl.worellana.workout_ms.model.WorkoutSession;
-import cl.worellana.workout_ms.model.dto.response.preview.RoutinePreviewResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -14,20 +13,16 @@ import java.util.UUID;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class WorkoutSessionResponse {
+public class WorkoutSessionPreviewResponse {
 
     private UUID id;
-    private UUID userId;
-    private RoutinePreviewResponse routine;
     private LocalDateTime startedAt;
     private LocalDateTime finishedAt;
     private String notes;
 
-    public static WorkoutSessionResponse from(WorkoutSession session) {
-        return WorkoutSessionResponse.builder()
+    public static WorkoutSessionPreviewResponse from(WorkoutSession session) {
+        return WorkoutSessionPreviewResponse.builder()
                 .id(session.getId())
-                .userId(session.getUserId())
-                .routine(session.getRoutine() != null ? RoutinePreviewResponse.from(session.getRoutine()) : null)
                 .startedAt(session.getStartedAt())
                 .finishedAt(session.getFinishedAt())
                 .notes(session.getNotes())

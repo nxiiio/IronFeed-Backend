@@ -1,6 +1,8 @@
 package cl.worellana.workout_ms.model.dto.response;
 
 import cl.worellana.workout_ms.model.PersonalRecord;
+import cl.worellana.workout_ms.model.dto.response.preview.ExercisePreviewResponse;
+import cl.worellana.workout_ms.model.dto.response.preview.WorkoutSessionPreviewResponse;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -18,8 +20,8 @@ public class PersonalRecordResponse {
 
     private UUID id;
     private UUID userId;
-    private UUID exerciseId;
-    private UUID sessionId;
+    private ExercisePreviewResponse exercise;
+    private WorkoutSessionPreviewResponse session;
     private BigDecimal weightKg;
     private Integer reps;
     private LocalDateTime achievedAt;
@@ -28,8 +30,8 @@ public class PersonalRecordResponse {
         return PersonalRecordResponse.builder()
                 .id(record.getId())
                 .userId(record.getUserId())
-                .exerciseId(record.getExercise().getId())
-                .sessionId(record.getSession().getId())
+                .exercise(ExercisePreviewResponse.from(record.getExercise()))
+                .session(WorkoutSessionPreviewResponse.from(record.getSession()))
                 .weightKg(record.getWeightKg())
                 .reps(record.getReps())
                 .achievedAt(record.getAchievedAt())
