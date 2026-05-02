@@ -9,6 +9,4 @@ import java.util.UUID;
 public interface PersonalRecordRepository extends JpaRepository<PersonalRecord, UUID> {
 
     List<PersonalRecord> findAllByUserId(UUID userId);
-
-    List<PersonalRecord> findAllByUserIdAndExerciseId(UUID userId, UUID exerciseId);
 }

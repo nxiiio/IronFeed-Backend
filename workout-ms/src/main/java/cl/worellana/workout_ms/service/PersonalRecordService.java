@@ -12,6 +12,4 @@ public interface PersonalRecordService {
     List<PersonalRecordResponse> findAll();
 
     List<PersonalRecordResponse> findAllByUserId(UUID userId);
-
-    List<PersonalRecordResponse> findAllByUserIdAndExerciseId(UUID userId, UUID exerciseId);
 }
