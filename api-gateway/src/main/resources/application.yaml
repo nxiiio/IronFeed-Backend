@@ -1,0 +1,44 @@
+server:
+  port: 8082
+
+spring:
+  output:
+    ansi:
+      enabled: always
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      server:
+        webmvc:
+          routes:
+            - id: users-ms
+              uri: http://localhost:8080
+              predicates:
+                - Path=/api/users/**
+
+            - id: workout-ms-routines
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/routines/**
+
+            - id: workout-ms-sessions
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/workout-sessions/**
+
+            - id: workout-ms-exercises
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/exercises/**
+
+            - id: workout-ms-personal-records
+              uri: http://localhost:8081
+              predicates:
+                - Path=/api/personal-records/**
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
