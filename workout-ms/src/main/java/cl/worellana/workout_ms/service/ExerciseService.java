@@ -9,7 +9,7 @@ public interface ExerciseService {
 
     ExerciseResponse findById(UUID id);
 
-    ExerciseResponse findByName(String name);
+    ExerciseResponse findBySlug(String slug);
 
     List<ExerciseResponse> findAll();
 }

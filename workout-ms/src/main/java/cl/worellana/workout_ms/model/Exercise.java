@@ -24,6 +24,9 @@ public class Exercise {
     @Column(name = "name", nullable = false, unique = true, length = 100)
     private String name;
 
+    @Column(name = "slug", nullable = false, unique = true, length = 100)
+    private String slug;
+
     @Column(name = "muscle_group", length = 50)
     private String muscleGroup;
 

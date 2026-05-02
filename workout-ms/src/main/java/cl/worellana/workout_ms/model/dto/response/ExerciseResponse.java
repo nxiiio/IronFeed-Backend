@@ -16,6 +16,7 @@ public class ExerciseResponse {
 
     private UUID id;
     private String name;
+    private String slug;
     private String muscleGroup;
     private String description;
 
@@ -23,6 +24,7 @@ public class ExerciseResponse {
         return ExerciseResponse.builder()
                 .id(exercise.getId())
                 .name(exercise.getName())
+                .slug(exercise.getSlug())
                 .muscleGroup(exercise.getMuscleGroup())
                 .description(exercise.getDescription())
                 .build();

@@ -19,9 +19,10 @@ public class ExerciseController {
     }
 
     @GetMapping
-    public ResponseEntity<List<ExerciseResponse>> findAll(@RequestParam(required = false) String name) {
-        if (name != null) {
-            return ResponseEntity.ok(List.of(exerciseService.findByName(name)));
+    public ResponseEntity<List<ExerciseResponse>> findAll(
+            @RequestParam(required = false) String slug) {
+        if (slug != null) {
+            return ResponseEntity.ok(List.of(exerciseService.findBySlug(slug)));
         }
         return ResponseEntity.ok(exerciseService.findAll());
     }

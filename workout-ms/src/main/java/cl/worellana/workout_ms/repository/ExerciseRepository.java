@@ -8,5 +8,5 @@ import java.util.UUID;
 
 public interface ExerciseRepository extends JpaRepository<Exercise, UUID> {
 
-    Optional<Exercise> findByName(String name);
+    Optional<Exercise> findBySlug(String slug);
 }

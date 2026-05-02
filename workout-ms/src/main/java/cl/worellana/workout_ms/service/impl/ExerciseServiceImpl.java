@@ -29,8 +29,8 @@ public class ExerciseServiceImpl implements ExerciseService {
 
     @Override
     @Transactional(readOnly = true)
-    public ExerciseResponse findByName(String name) {
-        return exerciseRepository.findByName(name)
+    public ExerciseResponse findBySlug(String slug) {
+        return exerciseRepository.findBySlug(slug)
                 .map(ExerciseResponse::from)
                 .orElseThrow(() -> new EntityNotFoundException("Ejercicio no encontrado."));
     }

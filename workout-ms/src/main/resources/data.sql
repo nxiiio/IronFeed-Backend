@@ -1,25 +1,25 @@
-INSERT INTO exercise (exercise_id, name, muscle_group, description)
+INSERT INTO exercise (exercise_id, name, slug, muscle_group, description)
 VALUES
-    ('edc24847-c54c-4f96-82a7-108387f79894', 'Sentadilla', 'Piernas', 'Ejercicio compuesto para cuádriceps, glúteos e isquiotibiales.'),
-    ('129d00a4-4730-43b4-967d-ec9431321554', 'Press banca', 'Pecho', 'Ejercicio compuesto para pecho, tríceps y deltoides anteriores.'),
-    ('12e55427-dc02-4d3b-a42d-8421583e8f48', 'Peso muerto', 'Espalda', 'Movimiento de fuerza para cadena posterior, espalda baja y glúteos.'),
-    ('1da053cb-5e18-41f9-8fe9-15c60feb1042', 'Press militar', 'Hombros', 'Press vertical para deltoides, tríceps y estabilidad del core.'),
-    ('032c6bb9-96f8-42d7-bb95-f960e53acf49', 'Dominadas', 'Espalda', 'Ejercicio de tracción vertical para dorsales y bíceps.'),
-    ('3890fb49-23a1-4dc6-b828-3e8ab8597886', 'Remo con barra', 'Espalda', 'Ejercicio de tracción horizontal para dorsales, romboides y trapecios.'),
-    ('34fcf9c6-3f94-4832-9a49-a532d8be4091', 'Curl bíceps', 'Brazos', 'Ejercicio de aislamiento para bíceps.'),
-    ('23eb12d2-cb7c-4989-8b1c-557ba579ecfe', 'Extensión tríceps', 'Brazos', 'Ejercicio de aislamiento para tríceps.'),
-    ('f5a18d83-d2a1-4df7-8fd5-d9c1abeb4337', 'Zancadas', 'Piernas', 'Ejercicio unilateral para cuádriceps, glúteos y estabilidad.'),
-    ('29bd461b-2486-49e7-9266-c4bb782286fa', 'Prensa de piernas', 'Piernas', 'Ejercicio guiado para desarrollar fuerza e hipertrofia en piernas.'),
-    ('fb701208-877e-474e-aba2-e269e1940d0b', 'Elevación de talones', 'Pantorrillas', 'Ejercicio de aislamiento para gastrocnemios y sóleo.'),
-    ('089fd91c-71ac-4b4f-bae1-3e078d7b55b5', 'Fondos en paralelas', 'Pecho', 'Ejercicio de empuje para pecho, tríceps y hombros.'),
-    ('4eaff5f5-4836-4d78-85b1-9911b8bcbd47', 'Aperturas con mancuernas', 'Pecho', 'Ejercicio de aislamiento para pectorales.'),
-    ('eecfd281-c757-4959-9aa1-d1c7b74bf0d7', 'Jalón al pecho', 'Espalda', 'Tracción vertical para dorsales y control escapular.'),
-    ('62f9debb-243c-4342-ab1b-a215a082149c', 'Face pull', 'Hombros', 'Ejercicio correctivo para deltoides posteriores y manguito rotador.'),
-    ('c564bf2f-6a97-40ab-8014-8c63df329a7e', 'Elevaciones laterales', 'Hombros', 'Ejercicio de aislamiento para deltoides medios.'),
-    ('dd3ec28d-55ca-451f-b5de-9846e908fbd8', 'Hip thrust', 'Glúteos', 'Ejercicio dominante de cadera para glúteos e isquiotibiales.'),
-    ('7d9a2208-9497-4545-88fa-5c84ef0779d1', 'Plancha abdominal', 'Core', 'Ejercicio isométrico para estabilidad del core.'),
-    ('310a5063-270e-4678-8030-0a730b7f75e7', 'Crunch abdominal', 'Core', 'Ejercicio de flexión de tronco para abdominales.'),
-    ('b4ba5964-2894-4c94-913c-febe943dadbf', 'Burpees', 'Cardio', 'Ejercicio metabólico de cuerpo completo.');
+    ('edc24847-c54c-4f96-82a7-108387f79894', 'Sentadilla', 'squat', 'Piernas', 'Ejercicio compuesto para cuádriceps, glúteos e isquiotibiales.'),
+    ('129d00a4-4730-43b4-967d-ec9431321554', 'Press banca', 'bench-press', 'Pecho', 'Ejercicio compuesto para pecho, tríceps y deltoides anteriores.'),
+    ('12e55427-dc02-4d3b-a42d-8421583e8f48', 'Peso muerto', 'deadlift', 'Espalda', 'Movimiento de fuerza para cadena posterior, espalda baja y glúteos.'),
+    ('1da053cb-5e18-41f9-8fe9-15c60feb1042', 'Press militar', 'overhead-press', 'Hombros', 'Press vertical para deltoides, tríceps y estabilidad del core.'),
+    ('032c6bb9-96f8-42d7-bb95-f960e53acf49', 'Dominadas', 'pull-up', 'Espalda', 'Ejercicio de tracción vertical para dorsales y bíceps.'),
+    ('3890fb49-23a1-4dc6-b828-3e8ab8597886', 'Remo con barra', 'barbell-row', 'Espalda', 'Ejercicio de tracción horizontal para dorsales, romboides y trapecios.'),
+    ('34fcf9c6-3f94-4832-9a49-a532d8be4091', 'Curl bíceps', 'biceps-curl', 'Brazos', 'Ejercicio de aislamiento para bíceps.'),
+    ('23eb12d2-cb7c-4989-8b1c-557ba579ecfe', 'Extensión tríceps', 'triceps-extension', 'Brazos', 'Ejercicio de aislamiento para tríceps.'),
+    ('f5a18d83-d2a1-4df7-8fd5-d9c1abeb4337', 'Zancadas', 'lunge', 'Piernas', 'Ejercicio unilateral para cuádriceps, glúteos y estabilidad.'),
+    ('29bd461b-2486-49e7-9266-c4bb782286fa', 'Prensa de piernas', 'leg-press', 'Piernas', 'Ejercicio guiado para desarrollar fuerza e hipertrofia en piernas.'),
+    ('fb701208-877e-474e-aba2-e269e1940d0b', 'Elevación de talones', 'calf-raise', 'Pantorrillas', 'Ejercicio de aislamiento para gastrocnemios y sóleo.'),
+    ('089fd91c-71ac-4b4f-bae1-3e078d7b55b5', 'Fondos en paralelas', 'parallel-bar-dip', 'Pecho', 'Ejercicio de empuje para pecho, tríceps y hombros.'),
+    ('4eaff5f5-4836-4d78-85b1-9911b8bcbd47', 'Aperturas con mancuernas', 'dumbbell-fly', 'Pecho', 'Ejercicio de aislamiento para pectorales.'),
+    ('eecfd281-c757-4959-9aa1-d1c7b74bf0d7', 'Jalón al pecho', 'lat-pulldown', 'Espalda', 'Tracción vertical para dorsales y control escapular.'),
+    ('62f9debb-243c-4342-ab1b-a215a082149c', 'Face pull', 'face-pull', 'Hombros', 'Ejercicio correctivo para deltoides posteriores y manguito rotador.'),
+    ('c564bf2f-6a97-40ab-8014-8c63df329a7e', 'Elevaciones laterales', 'lateral-raise', 'Hombros', 'Ejercicio de aislamiento para deltoides medios.'),
+    ('dd3ec28d-55ca-451f-b5de-9846e908fbd8', 'Hip thrust', 'hip-thrust', 'Glúteos', 'Ejercicio dominante de cadera para glúteos e isquiotibiales.'),
+    ('7d9a2208-9497-4545-88fa-5c84ef0779d1', 'Plancha abdominal', 'plank', 'Core', 'Ejercicio isométrico para estabilidad del core.'),
+    ('310a5063-270e-4678-8030-0a730b7f75e7', 'Crunch abdominal', 'crunch', 'Core', 'Ejercicio de flexión de tronco para abdominales.'),
+    ('b4ba5964-2894-4c94-913c-febe943dadbf', 'Burpees', 'burpee', 'Cardio', 'Ejercicio metabólico de cuerpo completo.');
 
 INSERT INTO routine (routine_id, user_id, name, description)
 VALUES
