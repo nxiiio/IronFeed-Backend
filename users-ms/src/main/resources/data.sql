@@ -1,4 +1,4 @@
-INSERT INTO users (id, username, email, password_hash, name, lastname, bio)
+INSERT INTO app_users (id, username, email, password_hash, name, lastname, bio)
 VALUES
     ('19a38146-a241-4f90-8380-1acef1e818b6', 'worellana',  'worellana@gmail.com',  'password123', 'Walter',    'Orellana',  'Fitness enjoyer y amante del hierro'),
     ('567ed1af-0475-4d56-97af-b002e1524cec', 'jdoe',       'jdoe@gmail.com',       'password123', 'John',      'Doe',       NULL),
