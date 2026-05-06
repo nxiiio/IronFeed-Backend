@@ -37,6 +37,11 @@ spring:
               predicates:
                 - Path=/api/personal-records/**
 
+            - id: social-ms-follows
+              uri: http://localhost:8083
+              predicates:
+                - Path=/api/follows/**
+
 management:
   endpoints:
     web:
