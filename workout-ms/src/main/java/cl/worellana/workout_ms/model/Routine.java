@@ -24,9 +24,9 @@ public class Routine {
     @Column(name = "user_id", nullable = false, updatable = false)
     private UUID userId;
 
-    @Column(name = "name", nullable = false, length = 100)
+    @Column(name = "name", nullable = false, length = 120)
     private String name;
 
-    @Column(name = "description", length = 4000)
+    @Column(name = "description", length = 1000)
     private String description;
 }

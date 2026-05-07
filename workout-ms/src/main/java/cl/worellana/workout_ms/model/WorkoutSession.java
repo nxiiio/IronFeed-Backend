@@ -35,6 +35,6 @@ public class WorkoutSession {
     @Column(name = "finished_at")
     private LocalDateTime finishedAt;
 
-    @Column(name = "notes", length = 4000)
+    @Column(name = "notes", length = 2000)
     private String notes;
 }
