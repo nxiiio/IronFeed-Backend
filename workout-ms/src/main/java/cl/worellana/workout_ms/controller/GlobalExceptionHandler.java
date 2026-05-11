@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(EntityNotFoundException.class)
     public ResponseEntity<ExceptionResponse> handleNotFound(EntityNotFoundException ex, HttpServletRequest req) {
-        return build(HttpStatus.NOT_FOUND, "NOT_FOUND", ex.getMessage(), req, null);
+        return build(HttpStatus.NOT_FOUND, "WORKOUT_RESOURCE_NOT_FOUND", ex.getMessage(), req, null);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -38,29 +38,29 @@ public class GlobalExceptionHandler {
     public ResponseEntity<ExceptionResponse> handleTypeMismatch(MethodArgumentTypeMismatchException ex, HttpServletRequest req) {
         String requiredType = ex.getRequiredType() != null ? ex.getRequiredType().getSimpleName() : "valor válido";
         String message = "El valor '" + ex.getValue() + "' no es un " + requiredType + " válido";
-        return build(HttpStatus.BAD_REQUEST, "BAD_REQUEST", "Parámetro inválido", req,
+        return build(HttpStatus.BAD_REQUEST, "INVALID_PARAMETER", "Parámetro inválido", req,
                 Map.of(ex.getName(), message));
     }
 
     @ExceptionHandler(MissingServletRequestParameterException.class)
     public ResponseEntity<ExceptionResponse> handleMissingParam(MissingServletRequestParameterException ex, HttpServletRequest req) {
-        return build(HttpStatus.BAD_REQUEST, "BAD_REQUEST", "Parámetro requerido ausente", req,
+        return build(HttpStatus.BAD_REQUEST, "MISSING_REQUIRED_PARAMETER", "Parámetro requerido ausente", req,
                 Map.of(ex.getParameterName(), "es obligatorio"));
     }
 
     @ExceptionHandler(RoutineAlreadyExistsException.class)
     public ResponseEntity<ExceptionResponse> handleRoutineExists(RoutineAlreadyExistsException ex, HttpServletRequest req) {
-        return build(HttpStatus.CONFLICT, "CONFLICT", ex.getMessage(), req, null);
+        return build(HttpStatus.CONFLICT, "ROUTINE_ALREADY_EXISTS", ex.getMessage(), req, null);
     }
 
     @ExceptionHandler(DataIntegrityViolationException.class)
     public ResponseEntity<ExceptionResponse> handleConflict(DataIntegrityViolationException ex, HttpServletRequest req) {
-        return build(HttpStatus.CONFLICT, "CONFLICT", "Violación de integridad de datos", req, null);
+        return build(HttpStatus.CONFLICT, "DATA_INTEGRITY_VIOLATION", "Violación de integridad de datos", req, null);
     }
 
     @ExceptionHandler({NoHandlerFoundException.class, NoResourceFoundException.class})
     public ResponseEntity<ExceptionResponse> handleRouteNotFound(Exception ex, HttpServletRequest req) {
-        return build(HttpStatus.NOT_FOUND, "NOT_FOUND", "No se encontró el recurso solicitado", req, null);
+        return build(HttpStatus.NOT_FOUND, "ROUTE_NOT_FOUND", "No se encontró el recurso solicitado", req, null);
     }
 
     @ExceptionHandler(Exception.class)
