@@ -1,16 +1,16 @@
 server:
-  port: 8081
+  port: 8084
 
 spring:
   output:
     ansi:
       enabled: always
   application:
-    name: users-ms
+    name: posts-ms
   datasource:
-    url: jdbc:postgresql://localhost:5432/users_db
-    username: users_user
-    password: users_pass
+    url: jdbc:postgresql://localhost:5432/posts_db
+    username: posts_user
+    password: posts_pass
     driver-class-name: org.postgresql.Driver
   sql:
     init:

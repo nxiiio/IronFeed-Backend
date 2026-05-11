@@ -1,5 +1,5 @@
 server:
-  port: 8082
+  port: 8080
 
 spring:
   output:
@@ -13,27 +13,27 @@ spring:
         webmvc:
           routes:
             - id: users-ms
-              uri: http://localhost:8080
+              uri: http://localhost:8081
               predicates:
                 - Path=/api/users/**
 
             - id: workout-ms-routines
-              uri: http://localhost:8081
+              uri: http://localhost:8082
               predicates:
                 - Path=/api/routines/**
 
             - id: workout-ms-sessions
-              uri: http://localhost:8081
+              uri: http://localhost:8082
               predicates:
                 - Path=/api/workout-sessions/**
 
             - id: workout-ms-exercises
-              uri: http://localhost:8081
+              uri: http://localhost:8082
               predicates:
                 - Path=/api/exercises/**
 
             - id: workout-ms-personal-records
-              uri: http://localhost:8081
+              uri: http://localhost:8082
               predicates:
                 - Path=/api/personal-records/**
 
@@ -41,6 +41,11 @@ spring:
               uri: http://localhost:8083
               predicates:
                 - Path=/api/follows/**
+
+            - id: posts-ms
+              uri: http://localhost:8084
+              predicates:
+                - Path=/api/posts/**
 
 management:
   endpoints:

@@ -12,3 +12,8 @@ GRANT ALL PRIVILEGES ON DATABASE workout_db TO workout_user;
 CREATE USER social_user WITH PASSWORD 'social_pass';
 CREATE DATABASE social_db OWNER social_user;
 GRANT ALL PRIVILEGES ON DATABASE social_db TO social_user;
+
+-- posts-ms
+CREATE USER posts_user WITH PASSWORD 'posts_pass';
+CREATE DATABASE posts_db OWNER posts_user;
+GRANT ALL PRIVILEGES ON DATABASE posts_db TO posts_user;

@@ -1,0 +1,78 @@
+-- Seed data for posts-ms.
+-- User, workout session, and personal record IDs are logical references to other microservices.
+-- There are no cross-service foreign keys by design.
+
+INSERT INTO post (post_id, user_id, type, workout_session_id, personal_record_id, caption, image_url, created_at)
+VALUES
+    ('a2d6f093-4477-4c5b-b8e1-6f3d3b0f1a11', '19a38146-a241-4f90-8380-1acef1e818b6', 'WORKOUT', 'eb7290e2-fd2e-4ea8-a0cd-6db866c43db9', NULL, 'Piernas completadas con foco en técnica. La sentadilla salió firme hoy, mantuve buena profundidad y cerré la sesión con accesorios de posterior sin perder el ritmo.', NULL, '2026-04-20 09:00:00'),
+    ('2b6d7c7c-84d3-4f2c-9a64-fd1dbb7a8c22', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', 'PERSONAL_RECORD', NULL, 'c12125aa-eff0-492c-9255-098ecf53627c', 'Nuevo PR en press banca. Costó, pero salió con pausa controlada y mejor trayectoria que la semana pasada. Pequeño avance, pero de esos que confirman que el proceso viene bien.', NULL, '2026-04-21 20:00:00'),
+    ('c4be2892-6250-47bd-b1b7-31cf9e935c33', 'e4675d09-e2b2-49ac-aae9-3e00fdb06abd', 'WORKOUT', 'f00a71f8-11bb-4857-8a1a-d00a1cc92eb9', NULL, 'Full body con buen ritmo. Prioricé básicos, descansos consistentes y una intensidad que pude sostener hasta el final. Hoy se progresó sin apurar el proceso.', NULL, '2026-04-22 08:15:00'),
+    ('d9c22e64-1c4e-45ce-93d6-1dc0d47a5d44', 'e0ff2a02-3364-434b-a368-44cf8cf13168', 'PERSONAL_RECORD', NULL, '0a28e033-834a-4920-8c6f-19a29b169224', 'Mejor marca en press militar. La técnica está cada vez más limpia: mejor braceo, barra más estable y menos compensación lumbar. Esto antes era un punto débil, así que pega distinto.', NULL, '2026-04-23 19:00:00'),
+    ('e31b2859-5f2d-4a64-aec5-f212c6db6e55', '1993208d-45a7-45bf-a17f-e3eddd1e6b27', 'PROGRESS_PHOTO', NULL, NULL, 'Actualización de progreso físico después de varias semanas constantes. No todo se mide con peso en la barra: mejor postura, más energía y más adherencia al plan.', 'https://example.com/progress/sofia-april.jpg', '2026-04-24 12:30:00'),
+    ('1b4c6f7d-8e21-4f0c-94b1-4c54ddc8e611', '567ed1af-0475-4d56-97af-b002e1524cec', 'WORKOUT', 'b58a390d-3a86-41d3-8ce6-4e378f98c0d1', NULL, 'Tirón de espalda y bíceps con énfasis en controlar cada repetición. Bajé un poco la carga para sentir mejor el dorsal y terminé con remos más prolijos que de costumbre.', NULL, '2026-04-25 07:45:00'),
+    ('7e5ab70c-ef77-4d33-8dc3-50e88e1e5a72', '0a1444be-4672-439f-b31c-52fe37bd47f9', 'PROGRESS_PHOTO', NULL, NULL, 'Comparativa de progreso del mes. La diferencia más grande está en la constancia: entrenar cuando hay ganas es fácil, sostenerlo en días normales es lo que realmente construye.', 'https://example.com/progress/marco-april.jpg', '2026-04-25 18:20:00'),
+    ('91d60dc2-8356-48ec-9d6e-cdff4eeef7a8', '19a38146-a241-4f90-8380-1acef1e818b6', 'PERSONAL_RECORD', NULL, '9af622d9-c4a3-4a12-bf6a-5f7c7ab92c3e', 'Nuevo récord personal en peso muerto. No fue solo fuerza: fue paciencia, respiración, setup y respetar la progresión. Buen recordatorio de que los detalles importan.', NULL, '2026-04-26 10:10:00'),
+    ('bcd6dc91-0e9d-4467-a4bd-1a3be8db34d9', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', 'WORKOUT', 'c79c39bb-605a-45db-91a1-1c1d5f392582', NULL, 'Sesión de empuje completada. Press inclinado, fondos asistidos y hombro lateral con buena conexión. No fue el día más pesado, pero sí uno de los más ordenados.', NULL, '2026-04-27 19:35:00'),
+    ('f62a48b1-e9bc-4715-8f41-c4e6f5772e92', 'e4675d09-e2b2-49ac-aae9-3e00fdb06abd', 'PROGRESS_PHOTO', NULL, NULL, 'Foto de progreso después de ajustar descanso y comida. A veces uno busca cambiar todo, pero dormir mejor y ser consistente con lo básico ya mueve muchísimo la aguja.', 'https://example.com/progress/camila-april.jpg', '2026-04-28 11:10:00'),
+    ('0fa3912b-64fc-474a-950e-1ee82584f336', 'e0ff2a02-3364-434b-a368-44cf8cf13168', 'WORKOUT', 'e4b7847a-b5c0-4809-b751-47cc0de093f6', NULL, 'Día de técnica y movilidad. Menos ego, más rango, más control. Estas sesiones no siempre se ven espectaculares, pero son las que permiten seguir entrenando fuerte sin romperse.', NULL, '2026-04-29 08:50:00');
+
+INSERT INTO reaction (reaction_id, post_id, user_id, created_at)
+VALUES
+    ('12d7728c-18a9-43cb-99a7-1a0b0a57f101', 'a2d6f093-4477-4c5b-b8e1-6f3d3b0f1a11', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', '2026-04-20 09:10:00'),
+    ('fb7c3c8a-93a1-4325-9b4d-00c77c4b9102', 'a2d6f093-4477-4c5b-b8e1-6f3d3b0f1a11', '1993208d-45a7-45bf-a17f-e3eddd1e6b27', '2026-04-20 09:12:00'),
+    ('4c13c18a-3758-41e2-a172-85884a71a103', '2b6d7c7c-84d3-4f2c-9a64-fd1dbb7a8c22', '19a38146-a241-4f90-8380-1acef1e818b6', '2026-04-21 20:05:00'),
+    ('914bc920-5164-4773-bf6c-a6c8d4a56104', '2b6d7c7c-84d3-4f2c-9a64-fd1dbb7a8c22', 'e0ff2a02-3364-434b-a368-44cf8cf13168', '2026-04-21 20:08:00'),
+    ('c9e611a4-77d7-43d4-aa83-879db3a8a105', 'c4be2892-6250-47bd-b1b7-31cf9e935c33', '567ed1af-0475-4d56-97af-b002e1524cec', '2026-04-22 08:25:00'),
+    ('da415ee9-17f6-432e-9e2a-2a7163b4d106', 'd9c22e64-1c4e-45ce-93d6-1dc0d47a5d44', '0a1444be-4672-439f-b31c-52fe37bd47f9', '2026-04-23 19:12:00'),
+    ('87465e3b-bc54-4c3a-b6fa-9ed6e6cb8107', 'e31b2859-5f2d-4a64-aec5-f212c6db6e55', '19a38146-a241-4f90-8380-1acef1e818b6', '2026-04-24 12:45:00'),
+    ('ae74d27a-cab8-4c0d-8ab3-f0fb85a3f211', '1b4c6f7d-8e21-4f0c-94b1-4c54ddc8e611', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', '2026-04-25 07:55:00'),
+    ('f6c7a1a7-d4cf-4564-a818-47aaf18bd122', '1b4c6f7d-8e21-4f0c-94b1-4c54ddc8e611', 'e4675d09-e2b2-49ac-aae9-3e00fdb06abd', '2026-04-25 08:02:00'),
+    ('ec5de237-b8ae-43ab-b608-6f9d1f60a333', '7e5ab70c-ef77-4d33-8dc3-50e88e1e5a72', '1993208d-45a7-45bf-a17f-e3eddd1e6b27', '2026-04-25 18:40:00'),
+    ('9b0d824d-4903-4872-b81f-7633f0d6f444', '91d60dc2-8356-48ec-9d6e-cdff4eeef7a8', '0a1444be-4672-439f-b31c-52fe37bd47f9', '2026-04-26 10:20:00'),
+    ('6c65383d-0582-4752-9f4c-8c61a048b555', 'bcd6dc91-0e9d-4467-a4bd-1a3be8db34d9', '567ed1af-0475-4d56-97af-b002e1524cec', '2026-04-27 19:50:00'),
+    ('d29c3fa1-15dc-4af7-b4fe-d94e9a926666', 'f62a48b1-e9bc-4715-8f41-c4e6f5772e92', 'e0ff2a02-3364-434b-a368-44cf8cf13168', '2026-04-28 11:25:00'),
+    ('5232dd33-e244-4dfa-9d09-75a322df1777', '0fa3912b-64fc-474a-950e-1ee82584f336', '19a38146-a241-4f90-8380-1acef1e818b6', '2026-04-29 09:05:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267011', 'a2d6f093-4477-4c5b-b8e1-6f3d3b0f1a11', 'e4675d09-e2b2-49ac-aae9-3e00fdb06abd', '2026-04-20 09:35:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267012', 'a2d6f093-4477-4c5b-b8e1-6f3d3b0f1a11', '0a1444be-4672-439f-b31c-52fe37bd47f9', '2026-04-20 09:42:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267013', '2b6d7c7c-84d3-4f2c-9a64-fd1dbb7a8c22', '1993208d-45a7-45bf-a17f-e3eddd1e6b27', '2026-04-21 20:20:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267014', '2b6d7c7c-84d3-4f2c-9a64-fd1dbb7a8c22', '567ed1af-0475-4d56-97af-b002e1524cec', '2026-04-21 20:28:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267015', 'c4be2892-6250-47bd-b1b7-31cf9e935c33', '19a38146-a241-4f90-8380-1acef1e818b6', '2026-04-22 08:45:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267016', 'c4be2892-6250-47bd-b1b7-31cf9e935c33', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', '2026-04-22 08:52:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267017', 'd9c22e64-1c4e-45ce-93d6-1dc0d47a5d44', '19a38146-a241-4f90-8380-1acef1e818b6', '2026-04-23 19:22:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267018', 'd9c22e64-1c4e-45ce-93d6-1dc0d47a5d44', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', '2026-04-23 19:29:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267019', 'e31b2859-5f2d-4a64-aec5-f212c6db6e55', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', '2026-04-24 13:08:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267020', 'e31b2859-5f2d-4a64-aec5-f212c6db6e55', '567ed1af-0475-4d56-97af-b002e1524cec', '2026-04-24 13:16:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267021', '1b4c6f7d-8e21-4f0c-94b1-4c54ddc8e611', '19a38146-a241-4f90-8380-1acef1e818b6', '2026-04-25 08:12:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267022', '7e5ab70c-ef77-4d33-8dc3-50e88e1e5a72', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', '2026-04-25 18:58:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267023', '91d60dc2-8356-48ec-9d6e-cdff4eeef7a8', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', '2026-04-26 10:38:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267024', '91d60dc2-8356-48ec-9d6e-cdff4eeef7a8', 'e4675d09-e2b2-49ac-aae9-3e00fdb06abd', '2026-04-26 10:45:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267025', 'bcd6dc91-0e9d-4467-a4bd-1a3be8db34d9', '19a38146-a241-4f90-8380-1acef1e818b6', '2026-04-27 20:12:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267026', 'f62a48b1-e9bc-4715-8f41-c4e6f5772e92', '1993208d-45a7-45bf-a17f-e3eddd1e6b27', '2026-04-28 11:48:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267027', '0fa3912b-64fc-474a-950e-1ee82584f336', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', '2026-04-29 09:24:00'),
+    ('a615e11d-0ee9-4d3c-9fd4-14bc9a267028', '0fa3912b-64fc-474a-950e-1ee82584f336', '567ed1af-0475-4d56-97af-b002e1524cec', '2026-04-29 09:31:00');
+
+INSERT INTO "comment" (comment_id, post_id, user_id, content, created_at)
+VALUES
+    ('60621d44-d5b4-4df9-a19d-29b50b7fb201', 'a2d6f093-4477-4c5b-b8e1-6f3d3b0f1a11', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', 'Tremenda sesión. Esa sentadilla viene subiendo fuerte.', '2026-04-20 09:20:00'),
+    ('79c35b99-e4b6-47a9-814e-c08d9ecf9202', 'a2d6f093-4477-4c5b-b8e1-6f3d3b0f1a11', '1993208d-45a7-45bf-a17f-e3eddd1e6b27', 'Buen trabajo, constancia ante todo.', '2026-04-20 09:30:00'),
+    ('8a3924d7-8bdf-431e-849f-f5e51a27d203', '2b6d7c7c-84d3-4f2c-9a64-fd1dbb7a8c22', '19a38146-a241-4f90-8380-1acef1e818b6', 'Ese PR merece celebrarse. Felicitaciones.', '2026-04-21 20:15:00'),
+    ('2f42fd2c-120d-44e3-bb17-8560e8ef3204', 'c4be2892-6250-47bd-b1b7-31cf9e935c33', '567ed1af-0475-4d56-97af-b002e1524cec', 'Full body bien hecho construye una base enorme.', '2026-04-22 08:40:00'),
+    ('f6d01819-21b4-4d62-b2e5-125d6a65d205', 'e31b2859-5f2d-4a64-aec5-f212c6db6e55', 'e0ff2a02-3364-434b-a368-44cf8cf13168', 'Se nota muchísimo la disciplina. Vamos por más.', '2026-04-24 13:00:00'),
+    ('0cd40a4d-eaa3-43f4-a529-f3ff935f0611', '1b4c6f7d-8e21-4f0c-94b1-4c54ddc8e611', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', 'Buenísimo bajar carga para mejorar técnica. Eso también es progresar.', '2026-04-25 08:05:00'),
+    ('752a7f58-2218-4e7d-8370-28d8498b7822', '7e5ab70c-ef77-4d33-8dc3-50e88e1e5a72', '1993208d-45a7-45bf-a17f-e3eddd1e6b27', 'Totalmente. La constancia aburrida es la que después se nota.', '2026-04-25 18:50:00'),
+    ('b3c0c6c5-8845-4ac7-af9d-28285d77d233', '91d60dc2-8356-48ec-9d6e-cdff4eeef7a8', '0a1444be-4672-439f-b31c-52fe37bd47f9', 'Ese peso muerto salió con mentalidad de competencia. Tremendo avance.', '2026-04-26 10:30:00'),
+    ('e95749c2-9054-4ea2-8f91-8234b558a744', 'bcd6dc91-0e9d-4467-a4bd-1a3be8db34d9', '567ed1af-0475-4d56-97af-b002e1524cec', 'Ordenar una sesión vale oro. No todo tiene que ser máximo para servir.', '2026-04-27 20:05:00'),
+    ('cf718a11-56ec-4f1e-b41e-4266fd77b555', 'f62a48b1-e9bc-4715-8f41-c4e6f5772e92', 'e0ff2a02-3364-434b-a368-44cf8cf13168', 'Dormir mejor cambia el juego. Buen enfoque en lo básico.', '2026-04-28 11:40:00'),
+    ('8d040663-9a5e-424b-bb88-0bffb385b666', '0fa3912b-64fc-474a-950e-1ee82584f336', '19a38146-a241-4f90-8380-1acef1e818b6', 'Estas sesiones son inversión a largo plazo. Bien ahí cuidando el rango.', '2026-04-29 09:15:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d011', 'a2d6f093-4477-4c5b-b8e1-6f3d3b0f1a11', 'e4675d09-e2b2-49ac-aae9-3e00fdb06abd', 'La profundidad en sentadilla se nota cuando no sacrificás control. Muy buen laburo.', '2026-04-20 09:45:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d012', '2b6d7c7c-84d3-4f2c-9a64-fd1dbb7a8c22', '567ed1af-0475-4d56-97af-b002e1524cec', 'Esa pausa controlada en banca cambia todo. PR bien ganado.', '2026-04-21 20:32:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d013', 'c4be2892-6250-47bd-b1b7-31cf9e935c33', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', 'Me gusta que mantuviste intensidad sin apurarte. Eso habla de buena planificación.', '2026-04-22 08:58:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d014', 'd9c22e64-1c4e-45ce-93d6-1dc0d47a5d44', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', 'Cuando el press militar mejora sin compensar lumbar, ahí hay progreso real.', '2026-04-23 19:34:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d015', 'e31b2859-5f2d-4a64-aec5-f212c6db6e55', '567ed1af-0475-4d56-97af-b002e1524cec', 'La adherencia al plan se nota más que cualquier cambio rápido. Tremenda constancia.', '2026-04-24 13:22:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d016', '1b4c6f7d-8e21-4f0c-94b1-4c54ddc8e611', '19a38146-a241-4f90-8380-1acef1e818b6', 'Controlar el dorsal en vez de tirar por tirar es exactamente el tipo de ajuste que suma.', '2026-04-25 08:18:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d017', '7e5ab70c-ef77-4d33-8dc3-50e88e1e5a72', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', 'Esa frase de sostenerlo en días normales es clave. Ahí se construye el hábito.', '2026-04-25 19:05:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d018', '91d60dc2-8356-48ec-9d6e-cdff4eeef7a8', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', 'Setup, respiración y paciencia: ese es el combo que hace que el peso muerto salga sólido.', '2026-04-26 10:52:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d019', '91d60dc2-8356-48ec-9d6e-cdff4eeef7a8', 'e4675d09-e2b2-49ac-aae9-3e00fdb06abd', 'Este PR tiene pinta de venir de varias semanas haciendo las cosas bien, no de suerte.', '2026-04-26 11:00:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d020', 'bcd6dc91-0e9d-4467-a4bd-1a3be8db34d9', '19a38146-a241-4f90-8380-1acef1e818b6', 'Una sesión ordenada también te deja mejor base para empujar fuerte la próxima.', '2026-04-27 20:18:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d021', 'f62a48b1-e9bc-4715-8f41-c4e6f5772e92', '1993208d-45a7-45bf-a17f-e3eddd1e6b27', 'Ajustar sueño y comida parece simple, pero es de lo que más impacto tiene.', '2026-04-28 11:55:00'),
+    ('72fa86b7-7e1d-4f95-9409-50895ea5d022', '0fa3912b-64fc-474a-950e-1ee82584f336', '4436eb0d-f3b4-4327-8b1f-c8b4716db3f4', 'Movilidad y técnica no son relleno. Son lo que permite entrenar fuerte más tiempo.', '2026-04-29 09:38:00');
