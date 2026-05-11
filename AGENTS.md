@@ -96,6 +96,8 @@ Before refactoring structure, verify the existing package organization and prese
 ## Documentation and Database Rules
 
 - Check `.docs/functional-requirements.md` for business requirements (RF-01 to RF-28) before implementing related features.
+- Analyze the functional requirements for context, but do not assume every requirement must be implemented immediately.
+- Implement only the requirements that match the current microservice, current layer, and the user's explicit request.
 - Do not modify `.docs/functional-requirements.md` unless the user explicitly asks.
 - Check `.docs/db-architecture.md` before making persistence decisions.
 - `.docs/db-architecture.md` should document current entity names unless a deliberate code refactor is made first.
@@ -127,6 +129,7 @@ Before refactoring structure, verify the existing package organization and prese
 - Do not expand API Gateway infrastructure unless explicitly requested.
 - Do not assume planned architecture pieces are already active in the current codebase.
 - Do not add AI attribution or `Co-Authored-By` lines to commits.
+- Use descriptive commit messages in Spanish without Conventional Commit prefixes unless the user explicitly asks otherwise.
 
 ## Agent Behavior for This Repo
 
