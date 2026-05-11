@@ -44,12 +44,12 @@ public class FollowServiceImpl implements FollowService {
 
     @Override
     @Transactional
-    public void unfollow(FollowRequest request) {
-        validateDifferentUsers(request);
+    public void unfollow(UUID followerUserId, UUID followingUserId) {
+        validateDifferentUsers(followerUserId, followingUserId);
 
         long deletedRows = followRepository.deleteByFollowerUserIdAndFollowingUserId(
-                request.getFollowerUserId(),
-                request.getFollowingUserId());
+                followerUserId,
+                followingUserId);
 
         if (deletedRows == 0) {
             throw new FollowNotFoundException();
@@ -73,7 +73,11 @@ public class FollowServiceImpl implements FollowService {
     }
 
     private void validateDifferentUsers(FollowRequest request) {
-        if (request.getFollowerUserId().equals(request.getFollowingUserId())) {
+        validateDifferentUsers(request.getFollowerUserId(), request.getFollowingUserId());
+    }
+
+    private void validateDifferentUsers(UUID followerUserId, UUID followingUserId) {
+        if (followerUserId.equals(followingUserId)) {
             throw new SelfFollowNotAllowedException();
         }
     }

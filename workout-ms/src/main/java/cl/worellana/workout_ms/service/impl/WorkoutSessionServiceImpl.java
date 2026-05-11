@@ -54,14 +54,6 @@ public class WorkoutSessionServiceImpl implements WorkoutSessionService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<WorkoutSessionResponse> findAll() {
-        return sessionRepository.findAll().stream()
-                .map(WorkoutSessionResponse::from)
-                .toList();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<WorkoutSessionResponse> findAllByUserId(UUID userId) {
         return sessionRepository.findAllByUserId(userId).stream()
                 .map(WorkoutSessionResponse::from)

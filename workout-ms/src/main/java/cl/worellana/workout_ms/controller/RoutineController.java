@@ -28,10 +28,7 @@ public class RoutineController {
     }
 
     @GetMapping
-    public ResponseEntity<List<RoutineResponse>> findAll(@RequestParam(required = false) UUID userId) {
-        if (userId == null) {
-            return ResponseEntity.ok(routineService.findAll());
-        }
+    public ResponseEntity<List<RoutineResponse>> findAll(@RequestParam UUID userId) {
         return ResponseEntity.ok(routineService.findAllByUserId(userId));
     }
 
@@ -44,11 +41,5 @@ public class RoutineController {
     public ResponseEntity<RoutineResponse> update(@PathVariable UUID id,
                                                   @Valid @RequestBody UpdateRoutineRequest request) {
         return ResponseEntity.ok(routineService.update(id, request));
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable UUID id) {
-        routineService.deleteById(id);
-        return ResponseEntity.noContent().build();
     }
 }

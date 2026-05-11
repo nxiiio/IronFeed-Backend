@@ -48,14 +48,6 @@ public class RoutineServiceImpl implements RoutineService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<RoutineResponse> findAll() {
-        return routineRepository.findAll().stream()
-                .map(RoutineResponse::from)
-                .toList();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<RoutineResponse> findAllByUserId(UUID userId) {
         return routineRepository.findAllByUserId(userId).stream()
                 .map(RoutineResponse::from)
@@ -74,14 +66,5 @@ public class RoutineServiceImpl implements RoutineService {
             routine.setDescription(request.getDescription());
         }
         return RoutineResponse.from(routineRepository.save(routine));
-    }
-
-    @Override
-    @Transactional
-    public void deleteById(UUID id) {
-        if (!routineRepository.existsById(id)) {
-            throw new EntityNotFoundException("Rutina no encontrada.");
-        }
-        routineRepository.deleteById(id);
     }
 }

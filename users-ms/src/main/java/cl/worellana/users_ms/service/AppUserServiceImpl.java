@@ -48,7 +48,7 @@ public class AppUserServiceImpl implements AppUserService {
     public AppUserResponse findById(UUID id) {
         return appUserRepository.findById(id)
                 .map(AppUserResponse::from)
-                .orElseThrow(() -> new EntityNotFoundException("User not found: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado: " + id));
     }
 
     @Override
@@ -56,7 +56,7 @@ public class AppUserServiceImpl implements AppUserService {
     public AppUserResponse findByUsername(String username) {
         return appUserRepository.findByUsername(username)
                 .map(AppUserResponse::from)
-                .orElseThrow(() -> new EntityNotFoundException("User not found: " + username));
+                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado: " + username));
     }
 
     @Override
@@ -71,7 +71,7 @@ public class AppUserServiceImpl implements AppUserService {
     @Transactional
     public AppUserResponse updateProfile(UUID id, AppUserProfileRequest request) {
         AppUser user = appUserRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("User not found: " + id));
+                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado: " + id));
         if (request.getName() != null) {
             user.setName(request.getName());
         }
@@ -82,14 +82,5 @@ public class AppUserServiceImpl implements AppUserService {
             user.setBio(request.getBio());
         }
         return AppUserResponse.from(user);
-    }
-
-    @Override
-    @Transactional
-    public void deleteById(UUID id) {
-        if (!appUserRepository.existsById(id)) {
-            throw new EntityNotFoundException("User not found: " + id);
-        }
-        appUserRepository.deleteById(id);
     }
 }

@@ -10,7 +10,7 @@ public interface FollowService {
 
     FollowResponse follow(FollowRequest request);
 
-    void unfollow(FollowRequest request);
+    void unfollow(UUID followerUserId, UUID followingUserId);
 
     List<FollowResponse> findAllByFollowerUserId(UUID followerUserId);
 

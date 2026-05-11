@@ -29,14 +29,6 @@ public class PersonalRecordServiceImpl implements PersonalRecordService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<PersonalRecordResponse> findAll() {
-        return personalRecordRepository.findAll().stream()
-                .map(PersonalRecordResponse::from)
-                .toList();
-    }
-
-    @Override
-    @Transactional(readOnly = true)
     public List<PersonalRecordResponse> findAllByUserId(UUID userId) {
         return personalRecordRepository.findAllByUserId(userId).stream()
                 .map(PersonalRecordResponse::from)

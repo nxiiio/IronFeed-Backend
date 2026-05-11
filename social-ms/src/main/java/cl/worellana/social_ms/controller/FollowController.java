@@ -32,9 +32,10 @@ public class FollowController {
         return ResponseEntity.status(HttpStatus.CREATED).body(followService.follow(request));
     }
 
-    @DeleteMapping
-    public ResponseEntity<Void> unfollow(@Valid @RequestBody FollowRequest request) {
-        followService.unfollow(request);
+    @DeleteMapping("/{followerUserId}/{followingUserId}")
+    public ResponseEntity<Void> unfollow(@PathVariable UUID followerUserId,
+                                         @PathVariable UUID followingUserId) {
+        followService.unfollow(followerUserId, followingUserId);
         return ResponseEntity.noContent().build();
     }
 

@@ -19,10 +19,7 @@ public class PersonalRecordController {
     }
 
     @GetMapping
-    public ResponseEntity<List<PersonalRecordResponse>> findAll(@RequestParam(required = false) UUID userId) {
-        if (userId == null) {
-            return ResponseEntity.ok(personalRecordService.findAll());
-        }
+    public ResponseEntity<List<PersonalRecordResponse>> findAll(@RequestParam UUID userId) {
         return ResponseEntity.ok(personalRecordService.findAllByUserId(userId));
     }
 

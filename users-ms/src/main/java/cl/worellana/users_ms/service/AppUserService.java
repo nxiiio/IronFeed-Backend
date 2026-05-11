@@ -13,5 +13,4 @@ public interface AppUserService {
     AppUserResponse findByUsername(String username);
     List<AppUserResponse> findAll();
     AppUserResponse updateProfile(UUID id, AppUserProfileRequest request);
-    void deleteById(UUID id);
 }

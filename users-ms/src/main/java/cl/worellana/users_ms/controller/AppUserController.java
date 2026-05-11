@@ -47,10 +47,4 @@ public class AppUserController {
                                                          @Valid @RequestBody AppUserProfileRequest request) {
         return ResponseEntity.ok(appUserService.updateProfile(id, request));
     }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable UUID id) {
-        appUserService.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
 }

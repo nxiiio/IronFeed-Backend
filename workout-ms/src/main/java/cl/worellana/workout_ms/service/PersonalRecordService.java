@@ -9,7 +9,5 @@ public interface PersonalRecordService {
 
     PersonalRecordResponse findById(UUID id);
 
-    List<PersonalRecordResponse> findAll();
-
     List<PersonalRecordResponse> findAllByUserId(UUID userId);
 }
