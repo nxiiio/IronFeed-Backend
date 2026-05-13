@@ -1,9 +1,11 @@
 package cl.worellana.users_ms.controller;
 
 import cl.worellana.users_ms.model.dto.AppUserProfileRequest;
+import cl.worellana.users_ms.model.dto.AppUserRequest;
 import cl.worellana.users_ms.model.dto.AppUserResponse;
 import cl.worellana.users_ms.service.AppUserService;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +20,12 @@ public class AppUserController {
 
     public AppUserController(AppUserService appUserService) {
         this.appUserService = appUserService;
+    }
+
+    @PostMapping
+    public ResponseEntity<AppUserResponse> register(@Valid @RequestBody AppUserRequest request) {
+        AppUserResponse created = appUserService.register(request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(created);
     }
 
     @GetMapping

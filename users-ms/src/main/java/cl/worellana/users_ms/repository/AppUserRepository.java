@@ -10,8 +10,6 @@ import cl.worellana.users_ms.model.AppUser;
 public interface AppUserRepository extends JpaRepository<AppUser, UUID> {
     Optional<AppUser> findByUsername(String username);
 
-    Optional<AppUser> findByUsernameOrEmail(String username, String email);
-
     boolean existsByUsername(String username);
 
     boolean existsByEmail(String email);
