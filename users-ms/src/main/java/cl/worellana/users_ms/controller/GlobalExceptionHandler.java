@@ -1,6 +1,8 @@
 package cl.worellana.users_ms.controller;
 
 import cl.worellana.users_ms.exception.EmailAlreadyExistsException;
+import cl.worellana.users_ms.exception.InvalidCredentialsException;
+import cl.worellana.users_ms.exception.InvalidTokenException;
 import cl.worellana.users_ms.exception.UsernameAlreadyExistsException;
 import cl.worellana.users_ms.model.dto.ExceptionResponse;
 import jakarta.persistence.EntityNotFoundException;
@@ -41,6 +43,16 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(EmailAlreadyExistsException.class)
     public ResponseEntity<ExceptionResponse> handleEmailExists(EmailAlreadyExistsException ex, HttpServletRequest req) {
         return build(HttpStatus.CONFLICT, "EMAIL_ALREADY_EXISTS", "El recurso ya existe", req, Map.of("email", ex.getMessage()));
+    }
+
+    @ExceptionHandler(InvalidCredentialsException.class)
+    public ResponseEntity<ExceptionResponse> handleInvalidCredentials(InvalidCredentialsException ex, HttpServletRequest req) {
+        return build(HttpStatus.UNAUTHORIZED, "INVALID_CREDENTIALS", ex.getMessage(), req, null);
+    }
+
+    @ExceptionHandler(InvalidTokenException.class)
+    public ResponseEntity<ExceptionResponse> handleInvalidToken(InvalidTokenException ex, HttpServletRequest req) {
+        return build(HttpStatus.UNAUTHORIZED, "INVALID_TOKEN", ex.getMessage(), req, null);
     }
 
     @ExceptionHandler(MethodArgumentTypeMismatchException.class)
