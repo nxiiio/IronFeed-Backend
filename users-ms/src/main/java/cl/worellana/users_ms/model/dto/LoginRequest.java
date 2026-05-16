@@ -1,5 +1,6 @@
 package cl.worellana.users_ms.model.dto;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -12,8 +13,9 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class LoginRequest {
 
+    @Email
     @NotBlank
-    private String usernameOrEmail;
+    private String email;
 
     @NotBlank
     private String password;
